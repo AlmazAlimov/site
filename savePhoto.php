@@ -1,6 +1,6 @@
 <?php 
 if (isset($_FILES) && $_FILES['userfile']['error'] == 0) {
-                $mysqli = new mysqli('127.0.0.1:3306','root','','your_db');
+    $musqli = new mysqli ('127.0.0.1-3306' , 'root','my_own_database');
                 if ($mysqli->connect_errno) {
                     echo $mysqli->connect_error;
                     exit;
@@ -11,7 +11,7 @@ if (isset($_FILES) && $_FILES['userfile']['error'] == 0) {
                 if (move_uploaded_file($_FILES['userfile']['tmp_name'], __DIR__ . $uploadFile)) {
                     $query = "INSERT INTO `gallery` (`path`) VALUES ('$uploadFile')";
                     if (!$mysqli->query($query)) {
-                        die('Ошибка запроса: '. $mysqli->error);
+                        die(': '. $mysqli->error);
                     }
                     if($mysql->connect_errno) {
                         echo 'Error!' . $mysql->connect_error;
