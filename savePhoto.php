@@ -11,7 +11,7 @@ if (isset($_FILES) && $_FILES['userfile']['error'] == 0) {
                 if (move_uploaded_file($_FILES['userfile']['tmp_name'], __DIR__ . $uploadFile)) {
                     $query = "INSERT INTO `gallery` (`path`) VALUES ('$uploadFile')";
                     if (!$mysqli->query($query)) {
-                        die(': '. $mysqli->error);
+                        die('Ошибка запроса: '. $mysqli->error);
                     }
                     if($mysql->connect_errno) {
                         echo 'Error!' . $mysql->connect_error;
